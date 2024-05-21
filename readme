@@ -1,0 +1,13 @@
+This is a simple hiveOS wrapper for the rqiner miner for Qubic-Solutions.  It uses the same arguments for the miner with some additions.
+
+Arguments:
+-arch  pick which miner binary you want to run.  Choices are: none, Broadwell, musl,znver3,znver4
+
+-t  threads I would suggest using $(proc) for your linux system to auto tell how many processors you have.  You can also add the option --ignore x to reduce the number of threads.  For example to reduce the number of threads by 1 the command would be $(nproc --ignore 1)
+
+-i This is your public wallet address.
+
+--label This is your rig name, I use %WORKER_NAME%
+ 
+Here is an example config line
+-arch znver4 -t $(nproc) -i ZOXXIDCZIMGCECCFAXDDCMBBXCDAQJIHGOOATAFPSBFIOFOYECFKUFPBEMWC --label %WORKER_NAME%
