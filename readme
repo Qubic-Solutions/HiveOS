@@ -1,13 +1,23 @@
-This is a simple hiveOS wrapper for the rqiner miner for Qubic-Solutions.  It uses the same arguments for the miner with some additions.
+Qubic-Solutions - HiveOS
 
-Arguments:
--arch  pick which miner binary you want to run.  Choices are: none, Broadwell, musl,znver3,znver4
+GPU/CPU 
+→CPU only: https://github.com/Qubic-Solutions/HiveOS/releases/download/EP109/rqiner-x86-CPU.v.0.6.1.tar.gz
+→GPU only: https://github.com/Qubic-Solutions/HiveOS/releases/download/EP109/rqiner-x86-cuda-gpu.0.6.0.tar.gz
+→GPU + CPU: https://github.com/Qubic-Solutions/HiveOS/releases/download/EP109/rqiner-x86-cuda-Nvidia.Broadwell.0.6.0.tar.gz
+→GPU + ZEN4: https://github.com/Qubic-Solutions/HiveOS/releases/download/EP109/rqiner-x86-cuda-Nvidia.Zen4.0.6.0.tar.gz
 
--t  threads I would suggest using $(proc) for your linux system to auto tell how many processors you have.  You can also add the option --ignore x to reduce the number of threads.  For example to reduce the number of threads by 1 the command would be $(nproc --ignore 1)
+❓Example:
+-i ZOXXIDCZIMGCECCFAXDDCMBBXCDAQJIHGOOATAFPSBFIOFOYECFKUFPBEMWC -label rig1
 
--i This is your public wallet address.
+📊Check your stats
+Official: https://pooltemp.qubic.solutions/info?miner=YOURIDHERE
+or
+By @MinerNinja: http://qubic.commando.sh/
 
---label This is your rig name, I use %WORKER_NAME%
- 
-Here is an example config line
--arch znver4 -t $(nproc) -i ZOXXIDCZIMGCECCFAXDDCMBBXCDAQJIHGOOATAFPSBFIOFOYECFKUFPBEMWC --label %WORKER_NAME%
+Options:
+-t, --threads <THREADS>  Amount of threads used for mining
+-b, --bench                             Benchmarks your miner without submitting solutions
+-i, --id <ID>                            Your payout Qubic ID (required for pool mining)
+-l, --label <LABEL>             Label used for identification of your miner on the pool
+-h, --help                                 Print help
+-V, --version                           Print version
