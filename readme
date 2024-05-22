@@ -1,10 +1,10 @@
 Qubic-Solutions - HiveOS
 
 GPU/CPU 
-→CPU only: https://github.com/Qubic-Solutions/HiveOS/releases/download/EP109/rqiner-x86-CPU.v.0.6.1.tar.gz
-→GPU only: https://github.com/Qubic-Solutions/HiveOS/releases/download/EP109/rqiner-x86-cuda-gpu.0.6.0.tar.gz
-→GPU + CPU: https://github.com/Qubic-Solutions/HiveOS/releases/download/EP109/rqiner-x86-cuda-Nvidia.Broadwell.0.6.0.tar.gz
-→GPU + ZEN4: https://github.com/Qubic-Solutions/HiveOS/releases/download/EP109/rqiner-x86-cuda-Nvidia.Zen4.0.6.0.tar.gz
+→CPU only: https://github.com/Qubic-Solutions/HiveOS/releases/download/EP110/rqiner-x86-CPU.v.0.6.1.tar.gz
+→GPU only: https://github.com/Qubic-Solutions/HiveOS/releases/download/EP110/rqiner-x86-cuda-gpu.0.6.0.tar.gz
+→GPU + CPU: https://github.com/Qubic-Solutions/HiveOS/releases/download/EP110/rqiner-x86-cuda-Nvidia.Broadwell.0.6.0.tar.gz
+→GPU + ZEN4: https://github.com/Qubic-Solutions/HiveOS/releases/download/EP110/rqiner-x86-cuda-Nvidia.Zen4.0.6.0.tar.gz
 
 ❓Example:
 -i ZOXXIDCZIMGCECCFAXDDCMBBXCDAQJIHGOOATAFPSBFIOFOYECFKUFPBEMWC -label rig1
