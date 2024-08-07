@@ -1,16 +1,13 @@
-Qubic-Solutions - HiveOS
-
-GPU/CPU 
-→CPU only: https://github.com/Qubic-Solutions/HiveOS/releases/download/EP110/rqiner-x86-CPU.v.0.6.1.tar.gz
-→GPU only: https://github.com/Qubic-Solutions/HiveOS/releases/download/EP110/rqiner-x86-cuda-gpu.0.6.0.tar.gz
-→GPU + CPU: https://github.com/Qubic-Solutions/HiveOS/releases/download/EP110/rqiner-x86-cuda-Nvidia.Broadwell.0.6.0.tar.gz
-→GPU + ZEN4: https://github.com/Qubic-Solutions/HiveOS/releases/download/EP110/rqiner-x86-cuda-Nvidia.Zen4.0.6.0.tar.gz
+### How to run HiveOS (GPU/CPU)
+- Url: Qubic.Solutions
+- Install Url (Hybrid/PPLNS) : ```https://github.com/Qubic-Solutions/HiveOS/releases/download/EP121/rqiner-x86-CPU.Only.1.0.1.tar.gz```
+- Template: ```-arch znver4 -t $(nproc) -i <payout-id> -l %WORKER_NAME%```
 
 ❓Example:
--i ZOXXIDCZIMGCECCFAXDDCMBBXCDAQJIHGOOATAFPSBFIOFOYECFKUFPBEMWC -label rig1
+-arch znver4 -t $(nproc) -i ZOXXIDCZIMGCECCFAXDDCMBBXCDAQJIHGOOATAFPSBFIOFOYECFKUFPBEMWC -l %WORKER_NAME%
 
-📊Check your stats
-Official: https://pooltemp.qubic.solutions/info?miner=YOURIDHERE
+## Check your stats
+Official: https://pool.qubic.solutions/info?miner=YOURIDHERE
 or
 By @MinerNinja: http://qubic.commando.sh/
 
