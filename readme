@@ -1,4 +1,4 @@
-###How to run HiveOS (GPU/CPU)
+How to run HiveOS (GPU/CPU)
 - Url: Qubic.Solutions
 - Install Url (Hybrid/PPLNS) : ```https://github.com/Qubic-Solutions/HiveOS/releases/download/EP121/rqiner-x86-CPU.Only.1.0.1.tar.gz```
 - Template: ```-arch znver4 -t $(nproc) -i <payout-id> -l %WORKER_NAME%```
@@ -6,7 +6,7 @@
 ❓Example:
 -arch znver4 -t $(nproc) -i ZOXXIDCZIMGCECCFAXDDCMBBXCDAQJIHGOOATAFPSBFIOFOYECFKUFPBEMWC -l %WORKER_NAME%
 
-## Check your stats
+Check your stats
 Official: https://pool.qubic.solutions/info?miner=YOURIDHERE
 or
 By @MinerNinja: http://qubic.commando.sh/
