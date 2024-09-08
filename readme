@@ -1,10 +1,23 @@
 How to run HiveOS (GPU/CPU)
 - Url: Qubic.Solutions
-- Install Url (Hybrid/PPLNS) : ```https://github.com/Qubic-Solutions/HiveOS/releases/download/EP121/rqiner-x86-CPU.Only.1.0.1.tar.gz```
-- Template: ```-arch znver4 -t $(nproc) -i <payout-id> -l %WORKER_NAME%```
+- Install Url (Hybrid/PPLNS) : ```https://github.com/Qubic-Solutions/HiveOS/releases/download/v.1.0.7b/rqiner-x86-cuda-CPUv1.0.7b.tar.gz```
+- Template: ```-arch znver4 -t $(nproc) -i <payout-id>``
+
+Open logoutput: tail -f /var/log/miner/custom/custom.log
+CPU log: tail -f /var/log/miner/custom/custom_cpu.log
+GPU log: tail -f /var/log/miner/custom/custom_gpu.log
+
+rqiner-x86-CPU = CPU only mining
+rqiner-x86-cuda = GPU only mining
+rqiner-x86-cuda-CPU = GPU + CPU mining
+
+If the miner is not starting run that command:
+apt update && echo "deb http://cz.archive.ubuntu.com/ubuntu jammy main" >> /etc/apt/sources.list && apt update && apt install tmux -y && apt install libc6 -y 
+enter + enter
 
 ❓Example:
--arch znver4 -t $(nproc) -i ZOXXIDCZIMGCECCFAXDDCMBBXCDAQJIHGOOATAFPSBFIOFOYECFKUFPBEMWC -l %WORKER_NAME%
+CPU: -arch znver4 -t $(nproc) -i ZOXXIDCZIMGCECCFAXDDCMBBXCDAQJIHGOOATAFPSBFIOFOYECFKUFPBEMWC 
+GPU: -i ZOXXIDCZIMGCECCFAXDDCMBBXCDAQJIHGOOATAFPSBFIOFOYECFKUFPBEMWC
 
 Check your stats
 Official: https://pool.qubic.solutions/info?miner=YOURIDHERE
@@ -18,3 +31,5 @@ Options:
 -l, --label <LABEL>             Label used for identification of your miner on the pool
 -h, --help                                 Print help
 -V, --version                           Print version
+-no-pplns                              For Solo mining 
+--idle-command                         To add a custom miner while Qubic idle
