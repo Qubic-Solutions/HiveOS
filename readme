@@ -1,7 +1,9 @@
 How to run HiveOS (GPU/CPU)
 - Url: Qubic.Solutions
-- Install Url (Hybrid/PPLNS) : ```https://github.com/Qubic-Solutions/HiveOS/releases/download/v.1.0.7b/rqiner-x86-cuda-CPUv1.0.7b.tar.gz```
-- Template: ```-arch znver4 -t $(nproc) -i <payout-id>``
+- Install Url (CPU+GPU) : https://github.com/Qubic-Solutions/HiveOS/releases/download/v.1.0.7b/rqiner-x86-cuda-CPUv1.0.7b.tar.gz
+- Install Url (CPU only) : https://github.com/Qubic-Solutions/HiveOS/releases/download/v.1.0.7b/rqiner-x86-CPUv1.0.7b.tar.gz
+- Install Url (GPU only) : https://github.com/Qubic-Solutions/HiveOS/releases/download/v.1.0.7b/rqiner-x86-cuda-v1.0.7.tar.gz
+- Template: -arch znver4 -t 32 -i <payout-id>
 
 Open logoutput: tail -f /var/log/miner/custom/custom.log
 CPU log: tail -f /var/log/miner/custom/custom_cpu.log
