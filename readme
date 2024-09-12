@@ -1,8 +1,5 @@
 How to run HiveOS (GPU/CPU)
 - Url: Qubic.Solutions
-- Install Url (CPU+GPU) : https://github.com/Qubic-Solutions/HiveOS/releases/download/v.1.0.7b/rqiner-x86-cuda-CPUv1.0.7b.tar.gz
-- Install Url (CPU only) : https://github.com/Qubic-Solutions/HiveOS/releases/download/v.1.0.7b/rqiner-x86-CPUv1.0.7b.tar.gz
-- Install Url (GPU only) : https://github.com/Qubic-Solutions/HiveOS/releases/download/v.1.0.7b/rqiner-x86-cuda-v1.0.7.tar.gz
 - Template: -arch znver4 -t 32 -i <payout-id>
 
 Open logoutput: tail -f /var/log/miner/custom/custom.log
@@ -12,13 +9,14 @@ GPU log: tail -f /var/log/miner/custom/custom_gpu.log
 rqiner-x86-CPU = CPU only mining
 rqiner-x86-cuda = GPU only mining
 rqiner-x86-cuda-CPU = GPU + CPU mining
+rqiner-x86-zluda = AMD GPU mining
 
 If the miner is not starting run that command:
 apt update && echo "deb http://cz.archive.ubuntu.com/ubuntu jammy main" >> /etc/apt/sources.list && apt update && apt install tmux -y && apt install libc6 -y 
 enter + enter
 
-❓Example:
-CPU: -arch znver4 -t $(nproc) -i ZOXXIDCZIMGCECCFAXDDCMBBXCDAQJIHGOOATAFPSBFIOFOYECFKUFPBEMWC 
+❓Example (7950x):
+CPU: -arch znver4 -t 32 -i ZOXXIDCZIMGCECCFAXDDCMBBXCDAQJIHGOOATAFPSBFIOFOYECFKUFPBEMWC 
 GPU: -i ZOXXIDCZIMGCECCFAXDDCMBBXCDAQJIHGOOATAFPSBFIOFOYECFKUFPBEMWC
 
 Check your stats
