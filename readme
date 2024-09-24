@@ -7,65 +7,50 @@ GPU log: tail -f /var/log/miner/custom/custom_gpu.log
 
 1. **Idle Command Forwarding:**
    - Forward idle command only to CPU:
-     ```
      --cpu-idle-command "cmd"
-     ```
    - Forward idle command only to GPU:
-     ```
      --gpu-idle-command "cmd"
-     ```
 
 2. **Flexible Mining Models:**
    - Choose your command based on your setup:
      - CPU only:
-       ```
        --model cpu
-       ```
-     - GPU only:
-       ```
-       --model gpu
-       ```
-     - CPU + GPU:
-       ```
-       --model cpu_gpu
-       ```
-     - AMD GPU only:
-       ```
-       --model amdgpu
-       ```
-     - AMD GPU + CPU:
-       ```
-       --model amdgpu_cpu
-       ```
 
-3. **Download and Update Options:**
+     - GPU only:
+       --model gpu
+
+     - CPU + GPU:
+       --model cpu_gpu
+
+     - AMD GPU only:
+       --model amdgpu
+
+     - AMD GPU + CPU:
+       --model amdgpu_cpu
+
+
+3. Download and Update Options:
    - Download the latest ore miner version:
-     ```
-     --download-ore
-     ```
+    --download-ore
+
    - Update the miner automatically (please rerun fs when an update is available):
-     ```
      AutoUpdate
-     ```
+
 
 4. Example extra config arguments with ore mining while idle. (CPU only + Ore mining + Auto Update)
-```--model cpu
+--model cpu
 --download-ore
 -arch cascadelake 
 -t 32 
 -i Your_Qubic-Wallet 
 --cpu-idle-command "/hive/miners/custom/OreMinePoolWorker_hiveos/ore-mine-pool-linux worker --route-server-url http://route.oreminepool.top:8080/ --server-url public --worker-wallet-address Your_Ore-Wallet" 
-AutoUpdate```
+AutoUpdate
 
 
 
 ❓If the miner is not starting run that command:
 apt update && echo "deb http://cz.archive.ubuntu.com/ubuntu jammy main" >> /etc/apt/sources.list && apt update && apt install tmux -y && apt install libc6 -y 
-enter + enter
 
-❓Example (7950x):
-CPU: -arch znver4 -t 32 -i ZOXXIDCZIMGCECCFAXDDCMBBXCDAQJIHGOOATAFPSBFIOFOYECFKUFPBEMWC 
-GPU: -i ZOXXIDCZIMGCECCFAXDDCMBBXCDAQJIHGOOATAFPSBFIOFOYECFKUFPBEMWC
 
 Check your stats
 Official: https://pool.qubic.solutions/info?miner=YOURIDHERE
@@ -81,3 +66,9 @@ Options:
 -V, --version                           Print version
 -no-pplns                              For Solo mining 
 --idle-command                         To add a custom miner while Qubic idle
+HiveOS Extra arguments:
+--model cpu
+--model gpu
+--model cpu_gpu
+--model amdgpu
+--model amdgpu_cpu
