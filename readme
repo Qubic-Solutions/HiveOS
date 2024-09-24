@@ -2,16 +2,64 @@ How to run HiveOS (GPU/CPU)
 - Url: Qubic.Solutions
 - Template: -arch znver4 -t 32 -i <payout-id>
 
-Open logoutput: tail -f /var/log/miner/custom/custom.log
 CPU log: tail -f /var/log/miner/custom/custom_cpu.log
 GPU log: tail -f /var/log/miner/custom/custom_gpu.log
 
-rqiner-x86-CPU = CPU only mining
-rqiner-x86-cuda = GPU only mining
-rqiner-x86-cuda-CPU = GPU + CPU mining
-rqiner-x86-zluda = AMD GPU mining
+1. **Idle Command Forwarding:**
+   - Forward idle command only to CPU:
+     ```
+     --cpu-idle-command "cmd"
+     ```
+   - Forward idle command only to GPU:
+     ```
+     --gpu-idle-command "cmd"
+     ```
 
-If the miner is not starting run that command:
+2. **Flexible Mining Models:**
+   - Choose your command based on your setup:
+     - CPU only:
+       ```
+       --model cpu
+       ```
+     - GPU only:
+       ```
+       --model gpu
+       ```
+     - CPU + GPU:
+       ```
+       --model cpu_gpu
+       ```
+     - AMD GPU only:
+       ```
+       --model amdgpu
+       ```
+     - AMD GPU + CPU:
+       ```
+       --model amdgpu_cpu
+       ```
+
+3. **Download and Update Options:**
+   - Download the latest ore miner version:
+     ```
+     --download-ore
+     ```
+   - Update the miner automatically (please rerun fs when an update is available):
+     ```
+     AutoUpdate
+     ```
+
+4. Example extra config arguments with ore mining while idle. (CPU only + Ore mining + Auto Update)
+```--model cpu
+--download-ore
+-arch cascadelake 
+-t 32 
+-i Your_Qubic-Wallet 
+--cpu-idle-command "/hive/miners/custom/OreMinePoolWorker_hiveos/ore-mine-pool-linux worker --route-server-url http://route.oreminepool.top:8080/ --server-url public --worker-wallet-address Your_Ore-Wallet" 
+AutoUpdate```
+
+
+
+❓If the miner is not starting run that command:
 apt update && echo "deb http://cz.archive.ubuntu.com/ubuntu jammy main" >> /etc/apt/sources.list && apt update && apt install tmux -y && apt install libc6 -y 
 enter + enter
 
