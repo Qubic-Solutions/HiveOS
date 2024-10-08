@@ -46,7 +46,8 @@ AutoUpdate
 ## **5. Troubleshooting**
 If the miner is not starting, run the following command:
 apt update && echo "deb http://cz.archive.ubuntu.com/ubuntu jammy main" >> /etc/apt/sources.list && apt update && apt install tmux -y && apt install libc6 -y
-For every new command with `--` and `AutoUpdate` you need to setup a new line.
+
+You must create a new line for each new command with `--` and `AutoUpdate`.
 
 ## **Check Your Stats**
 - **Official Stats:** [https://pool.qubic.solutions/info?miner=YOURIDHERE](https://pool.qubic.solutions/info?miner=YOURIDHERE)
