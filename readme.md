@@ -1,72 +1,95 @@
-# How to Run HiveOS (GPU/CPU)
+# OXZD Custom Wrapper for HiveOS
 
-Welcome to Qubic.Solutions mining guide for HiveOS. Follow the instructions below to set up and run your miner effectively.
+This setup uses the **OXZD Miner**, configured via the `oxzd_config.json` file, to define the primary mining algorithm and optional idle algorithms for both GPU and CPU.
 
-## **Mining URL**
-- **URL:** [Qubic.Solutions](https://qubic.solutions)
+---
 
-## **Basic Template**
-Use the following template to start mining:
--arch znver4 -t 32 -i <payout-id>
+## Configuration
 
-## **Log Monitoring**
-- **CPU log:** `tail -f /var/log/miner/custom/custom_cpu.log`
-- **GPU log:** `tail -f /var/log/miner/custom/custom_gpu.log`
+All settings are defined in the Custom User Config file.  
 
-## **1. Idle Command Forwarding**
-You can forward idle commands to either CPU or GPU:
-- Forward idle command only to **CPU**: `--cpu-idle-command "cmd"`
-- Forward idle command only to **GPU**: `--gpu-idle-command "cmd"`
+---
 
-## **2. Flexible Mining Models**
-Choose the appropriate model based on your setup:
-- **CPU only:** `--model cpu`
-- **GPU only:** `--model gpu`
-- **CPU + GPU:** `--model cpu_gpu`
-- **AMD GPU only:** `--model amdgpu`
-- **AMD GPU + CPU:** `--model amdgpu_cpu`
+### Example Custom User Config
 
-## **3. Download and Update Options**
-- Download the latest custom miner version: 
-`--download tnn` /
-`--download ore`
-- Enable automatic miner updates (please re-run the filesystem when an update is available): `AutoUpdate`
-
-## **4. Example with Extra Config Arguments (CPU only + Ore mining + Auto Update)**
-```
---model cpu
---download-ore
--arch cascadelake
--t 32
--i Your_Qubic-Wallet
---cpu-idle-command "/hive/miners/custom/OreMinePoolWorker_hiveos/ore-mine-pool-linux worker --route-server-url http://route.oreminepool.top:8080/ --server-url public --worker-wallet-address Your_Ore-Wallet"
-AutoUpdate
+```json
+{
+  "main_algo_gpu": "neptune",
+  "main_algo_cpu": "neptune",
+  "gpu_idle_command": "/hive/miners/XDminer--algo XD --pool poolhub.io:3111 --wallet 75LEzrt2vH27WqidfHgNSbhSjw5Ev4AH27MLZ.$(hostname)",
+  "cpu_idle_command": "/hive/miners/XDminer--algo XD --pool poolhub.io:3111 --wallet 75LEzrt2vH27WqidfHgNSbhSjw5Ev4AH27MLZ.$(hostname)",
+  "npt_address": "YOUR_NEPTUNE_ADDRESS",
+  "qubic_address": "YOUR_QUBIC_ADDRESS",
+  "worker_name": "HiveOS_Rig_01"
+}
 ```
 
-## **5. Troubleshooting**
-If the miner is not starting, run the following command:
+---
+
+## Required Fields
+
+| Field | Description | Values |
+|-------|--------------|--------|
+| `main_algo_gpu` | Primary algorithm for GPU (what you want to mine). | `"neptune"` or `""` |
+| `main_algo_cpu` | Primary algorithm for CPU (what you want to mine). | `"neptune"`, `"xelis"` or `""` |
+| `npt_address` | Your Neptune (NPT) wallet address. Required if `main_algo_gpu` or `main_algo_cpu` is set to `neptune`. | Any valid NPT address |
+| `xelis_address` | Your Xelis wallet address. Required if `main_algo_cpu` is set to `xelis`. | Any valid Xelis address |
+
+> **Important:**  
+> At least one of the primary algorithms (`main_algo_gpu` or `main_algo_cpu`) must be set.
+
+---
+
+## Idle Algorithms (Optional)
+
+These algorithms run when the primary algorithm is idle or has no tasks.
+
+| Field | Description | Values |
+|--------|--------------|--------|
+| `gpu_idle_command` | Idle algorithm for GPU. | 
+| `cpu_idle_command` | Idle algorithm for CPU. | 
+| `worker_name` | (Optional) Your rig name in the pool. Defaults to the HiveOS hostname. | Any string |
+
+---
+
+## Advanced Pool Settings (Optional)
+
+If you wish to use custom pools, you can define the following fields:
+
+| Field | Description | Default |
+|--------|--------------|----------|
+| `npt_url` | Neptune pool URL | `stratum+ssl://eu.poolhub.io:4444` |
+| `xelis_url` | Xelis pool URL | `` |
+| `tari_url` | Tari pool URL | `` |
+
+---
+
+## Notes
+
+- Ensure the HiveOS Custom User Config is properly formatted.
+- Empty fields should be represented as empty strings (`""`), not `null`.
+- Restart the miner after making configuration changes.
+
+---
+
+## Example Setup
+
+If you want to mine **Neptune** on GPU and **XD** on idle:
+
+```json
+{
+  "main_algo_gpu": "neptune",
+  "npt_address": "nolgam1cplzv...",
+  "gpu_idle_command": "/hive/miners/XDminer--algo XD --pool poolhub.io:3111 --wallet 75LEzrt2vH27WqidfHgNSbhSjw5Ev4AH27MLZ.$(hostname)",
+}
 ```
-apt update && echo "deb http://cz.archive.ubuntu.com/ubuntu jammy main" >> /etc/apt/sources.list && apt update && apt install tmux -y && apt install libc6 -y
-```
-You must create a new line for each new command with `--` and `AutoUpdate`.
 
-## **Check Your Stats**
-- **Official Stats:** [https://pool.qubic.solutions/info?miner=YOURIDHERE](https://pool.qubic.solutions/info?miner=YOURIDHERE)
-- **MinerNinja Stats:** [http://qubic.commando.sh/](http://qubic.commando.sh/)
+This will:
+- Use Neptune for GPU mining.
+- Switch to Qubic automatically when no Neptune jobs are available.
 
-## **6. Options**
-- `-t, --threads <THREADS>`: Amount of threads used for mining
-- `-b, --bench`: Benchmarks your miner without submitting solutions
-- `-i, --id <ID>`: Your payout Qubic ID (required for pool mining)
-- `-l, --label <LABEL>`: Label used for identifying your miner on the pool
-- `-h, --help`: Print help
-- `-V, --version`: Print version
-- `--no-pplns`: For Solo mining
-- `--idle-command`: Add a custom miner while Qubic is idle
 
-## **7. HiveOS Extra Arguments**
-- `--model cpu`
-- `--model gpu`
-- `--model cpu_gpu`
-- `--model amdgpu`
-- `--model amdgpu_cpu`
+## Support
+
+For setup guides, troubleshooting, and community support, visit:  
+👉 [https://discord.poolhub.io](https://discord.poolhub.io)
