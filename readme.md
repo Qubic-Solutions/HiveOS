@@ -19,7 +19,7 @@ All settings are defined in the Custom User Config file.
   "gpu_idle_command": "/hive/miners/XDminer--algo XD --pool poolhub.io:3111 --wallet 75LEzrt2vH27WqidfHgNSbhSjw5Ev4AH27MLZ.$(hostname)",
   "cpu_idle_command": "/hive/miners/XDminer--algo XD --pool poolhub.io:3111 --wallet 75LEzrt2vH27WqidfHgNSbhSjw5Ev4AH27MLZ.$(hostname)",
   "npt_address": "YOUR_NEPTUNE_ADDRESS",
-  "qubic_address": "YOUR_QUBIC_ADDRESS",
+  "npt_url": "stratum+ssl://eu.poolhub.io:4444"
   "worker_name": "HiveOS_Rig_01"
 }
 ```
