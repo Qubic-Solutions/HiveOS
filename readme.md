@@ -1,12 +1,12 @@
 # OXZD Custom Wrapper for HiveOS
 
-This setup uses the **OXZD Miner**, configured via the `oxzd_config.json` file, to define the primary mining algorithm and optional idle algorithms for both GPU and CPU.
+This setup uses the **OXZD Miner**, configured via the Custom User Config to write the correct`oxzd_config.json` file for OXZD, to define the primary mining algorithm and optional idle algorithms for both GPU and CPU.
 
 ---
 
 ## Configuration
 
-All settings are defined in the Custom User Config file.  
+All settings are defined in the HiveOS Custom User Config.  
 
 ---
 
